@@ -39,6 +39,7 @@ const popups = [
     <img src="img/EPI-USE.png" alt="EPI-USE Logo">
     <h2>One of the sponsor of this website!</h2>
     <p>EPI-USE</p>
+    <button onclick="nextPopup()">Continue</button>
     `,
     `
     `
