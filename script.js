@@ -37,11 +37,15 @@ window.addEventListener("message", (e) => {
 const popups = [
     `
     <img src="img/EPI-USE.png" alt="EPI-USE Logo">
-    <h2>One of the sponsor of this website!</h2>
-    <p>EPI-USE</p>
+    <h2>The sponsor of this website!</h2><br>
+    <p>EPI-USE is a global company, and a member of Group Elephant, that specializes in implementing, managing, and optimizing SAP® and SAP SuccessFactors® systems, with a particular, historically strong focus on HR and Payroll. The logo is very creative.Thank you EPI-USE for sponsoring!</p><br>
     <button onclick="nextPopup()">Continue</button>
     `,
     `
+    <div style="width: 500px; height: 500px;">
+        <canvas id="pieChart"></canvas>
+    </div>
+
     `
 ];
 
@@ -54,4 +58,49 @@ function nextPopup() {
     }
 }
 
-openPopup2(popups[0]);
+openPopup2(popups[0]); 
+
+/* Pie Chart via Chart.js */
+
+const data = {
+    labels: [
+        'Visitors',
+        'S',
+        'Yellow'
+    ],
+    datasets: [{
+        label: 'My First Dataset',
+        data: [55, 50, 100], // These values determine the size of the slices
+        backgroundColor: [
+            '#036bfc',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4
+    }]
+};
+
+// Configuration options
+const config = {
+    type: 'pie', // Specify the chart type as 'pie'
+    data: data,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Sample Pie Chart'
+            }
+        }
+    },
+};
+
+// Render the chart
+// Get the canvas element context
+var ctx = document.getElementById('pieChart').getContext('2d');
+
+// Create the new Chart instance
+var pieChart = new Chart(ctx, config);
