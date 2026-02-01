@@ -40,9 +40,10 @@ const popups = [
     <button onclick="nextPopup()">Continue</button>
     `,
     `
-    <div style="width: 500px; height: 500px;">
+    <div style="width: 400px; height: 400px;">
         <canvas id="pieChart"></canvas>
     </div>
+    <button onclick="closePopup()">Continue</button>
     `
 ];
 
