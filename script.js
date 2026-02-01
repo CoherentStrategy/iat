@@ -25,7 +25,6 @@ function openAd() {
 
 window.addEventListener("message", (e) => {
     if (e.data?.type === "close-ad") {
-        setTimeout(() => ad.remove(), 300);
         backdrop.classList.remove("is-visible");
         backdrop.hidden = true;
     }
