@@ -9,7 +9,7 @@
     display: none;
 }
 
-#popupOverlay1, #popupOverlay2{
+#popupOverlay2{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.45);
@@ -18,7 +18,7 @@
     z-index:9999;
 }
 
-#popupBox1, #popupBox2{background:#fff;padding:20px;border-radius:10px;max-width:650px;width:100%}
+#popupBox2{background:#fff;padding:20px;border-radius:10px;max-width:650px;width:100%}
 
 .is-visible {
     display: flex; /* Becomes a flex container when this class is present */
