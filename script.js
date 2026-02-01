@@ -16,7 +16,7 @@ let popupOpen2=false
 function openPopup2(html){ $("popupContent2").innerHTML=html; $("popupOverlay2").classList.remove("hidden"); $("popupOverlay2").classList.add("is-visible"); }
 function closePopup2(){ $("popupOverlay2").classList.remove("is-visible"); $("popupOverlay2").classList.add("hidden"); }
 
-const backdrop = document.getElementById("ad-backdrop");
+const backdrop = $("ad-backdrop");
 
 function openAd() {
     backdrop.classList.add("is-visible");
@@ -31,6 +31,8 @@ window.addEventListener("message", (e) => {
     }
 });
 
+let popupIndex = 0;
+
 const popups = [
     `
     <img src="img/EPI-USE.png" alt="EPI-USE Logo">
@@ -42,7 +44,6 @@ const popups = [
     <div style="width: 500px; height: 500px;">
         <canvas id="pieChart"></canvas>
     </div>
-
     `
 ];
 
@@ -50,6 +51,9 @@ function nextPopup() {
     popupIndex++;
     if (popupIndex < popups.length) {
         openPopup2(popups[popupIndex]);
+        if (popupIndex === 1) {
+            renderPieChart();
+        }
     } else {
         closePopup2();
     }
@@ -96,8 +100,8 @@ const config = {
 };
 
 // Render the chart
-// Get the canvas element context
-var ctx = document.getElementById('pieChart').getContext('2d');
-
-// Create the new Chart instance
-var pieChart = new Chart(ctx, config);
+function renderPieChart() {
+    const ctx = $('pieChart').getContext('2d');
+    // It's safer to define your 'config' outside or inside this function
+    new Chart(ctx, config);
+}
