@@ -43,8 +43,12 @@ const popups = [
     <div style="width: 400px; height: 400px;">
         <canvas id="pieChart"></canvas>
     </div>
-    <button onclick="closePopup2()">Continue</button>
+    <button onclick="nextPopup()">Continue</button>
+    `,
     `
+    <iframe src="https://www.youtube.com/embed/fWy_xqRV_GA?rel=0&autoplay=1&enablejsapi=1">
+    </iframe>
+    `,
 ];
 
 function nextPopup() {
@@ -64,18 +68,18 @@ openPopup2(popups[0]);
 /* Pie Chart via Chart.js */
 let p1 = 67;
 let p2 = 48;
-let p3 = 8;
+let p3 = 4;
 let p4 = 108;
 
 const data = {
     labels: [
-        'Zest breathing visitors',
-        'Bored visitors',
+        'Zest breathing',
+        'Boredom',
         'Nerds',
-        'Manga visitors'
+        'Manga'
     ],
     datasets: [{
-        label: 'My First Dataset',
+        label: 'Website Dataset',
         data: [p1, p2, p3, p4], // These values determine the size of the slices
         backgroundColor: [
             '#036bfc',
@@ -99,7 +103,7 @@ const config = {
             },
             title: {
                 display: true,
-                text: 'Website'
+                text: 'Website Interests'
             }
         }
     },
@@ -110,4 +114,31 @@ function renderPieChart() {
     const ctx = $('pieChart').getContext('2d');
     // It's safer to define your 'config' outside or inside this function
     new Chart(ctx, config);
+}
+
+/* Youtube API */
+let player;
+
+// This function fires automatically when the API is ready
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('myVideo', {
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// This function runs whenever the player starts, pauses, or finishes
+function onPlayerStateChange(event) {
+    // YT.PlayerState.ENDED is the code for a finished video
+    if (event.data === YT.PlayerState.ENDED) {
+        
+        handleVideoComplete();
+    }
+}
+
+function handleVideoComplete() {
+    // Your custom code here
+    // For example, close a popup or show a hidden button
+    nextPopup();
 }
