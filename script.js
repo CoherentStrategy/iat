@@ -1,5 +1,8 @@
 /* ---------- HELPERS ---------- */
 const $ = id => document.getElementById(id);
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function getRandom(arr) {
   // Check if the array is empty to prevent errors
@@ -46,9 +49,14 @@ const popups = [
     <button onclick="nextPopup()">Continue</button>
     `,
     `
-    <iframe src="https://www.youtube.com/embed/fWy_xqRV_GA?rel=0&autoplay=1&enablejsapi=1">
+    <iframe width="560" height="315"
+    src="https://www.youtube.com/embed/fWy_xqRV_GA?rel=0&autoplay=1&enablejsapi=1">
     </iframe>
     `,
+    `
+    <button onclick="closePopup2">Close</button>
+    `
+
 ];
 
 function nextPopup() {
@@ -132,7 +140,7 @@ function onYouTubeIframeAPIReady() {
 function onPlayerStateChange(event) {
     // YT.PlayerState.ENDED is the code for a finished video
     if (event.data === YT.PlayerState.ENDED) {
-        
+        delay(2000);
         handleVideoComplete();
     }
 }
