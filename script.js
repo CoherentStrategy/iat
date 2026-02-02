@@ -43,7 +43,7 @@ const popups = [
     <div style="width: 400px; height: 400px;">
         <canvas id="pieChart"></canvas>
     </div>
-    <button onclick="closePopup()">Continue</button>
+    <button onclick="closePopup2()">Continue</button>
     `
 ];
 
@@ -62,20 +62,26 @@ function nextPopup() {
 openPopup2(popups[0]); 
 
 /* Pie Chart via Chart.js */
+let p1 = 67;
+let p2 = 48;
+let p3 = 8;
+let p4 = 108;
 
 const data = {
     labels: [
-        'Visitors',
-        'S',
-        'Yellow'
+        'Zest breathing visitors',
+        'Bored visitors',
+        'Nerds',
+        'Manga visitors'
     ],
     datasets: [{
         label: 'My First Dataset',
-        data: [55, 50, 100], // These values determine the size of the slices
+        data: [p1, p2, p3, p4], // These values determine the size of the slices
         backgroundColor: [
             '#036bfc',
             'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            '#40e0d0',
+            '#00ccff'
         ],
         hoverOffset: 4
     }]
@@ -93,7 +99,7 @@ const config = {
             },
             title: {
                 display: true,
-                text: 'Sample Pie Chart'
+                text: 'Website'
             }
         }
     },
